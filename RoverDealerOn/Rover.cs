@@ -10,10 +10,10 @@ namespace RoverDealerOn
     {
         private int x = 0, y = 0;
         private int direction;
-        private IGrid _igrid;
+        private IGrid _igrid;//using interface here will inject implemented Grid later for dependency injection
         
         //I am thinking that I need to pass in the direction when the Rover is instantiated
-        public Rover(int dir, int startX, int startY, IGrid igrid)
+        public Rover(int dir, int startX, int startY, IGrid igrid)//
         {
             direction = dir;
             x = startX;
@@ -40,14 +40,18 @@ namespace RoverDealerOn
             return endingPosition.ToString();
         }
 
+        //This function tracks the xyz coords as input chars are passed in
+        //Valid inputs are L, R, and M.  L and R change the direction the rover is facing (or z coord) and M
+        //moves the rover forward in whatever direction it is facing.  If at any time the rover leaves the grid
+        //a custom roveroutofbounds exception 
         public void MoveRover(char moveInput)
         {
-            // If move is left or
-            // right, then change direction
+            // If move is left or right, then change direction
             if (moveInput == 'R')
                 direction = (direction + 1) % 4;
             else if (moveInput == 'L')
                 direction = (4 + direction - 1) % 4;
+            // Of move is M change x or y
             else if (moveInput == 'M')
             {
                 if (direction == 0)
@@ -83,10 +87,6 @@ namespace RoverDealerOn
                     }
                 }
             }
-
         }
-
-
-
     }
 }

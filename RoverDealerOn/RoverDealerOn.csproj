@@ -48,7 +48,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Rover.cs" />
-    <Compile Include="RoverOutOfBounds.cs" />
+    <Compile Include="RoverOutOfBoundsException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
