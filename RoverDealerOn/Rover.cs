@@ -16,7 +16,7 @@ namespace RoverDealerOn
         public Rover(int dir, int startX, int startY, IGrid igrid)//
         {
             direction = dir;
-            x = startX;
+            x = startX; 
             y = startY;
             _igrid = igrid;
         }
